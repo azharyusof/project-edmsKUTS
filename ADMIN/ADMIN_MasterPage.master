@@ -1,0 +1,137 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="ADMIN_MasterPage.master.cs" Inherits="ADMIN_MasterPage" %>
+
+<!DOCTYPE html>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <link rel="icon" type="image/png" href="Img/opus.jpg"/>
+    <link href="Content/bootstrap.css" rel="stylesheet" />
+    <link href="Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <link href="Content/bootstrapZebra.css" rel="stylesheet" />
+
+    <title>STR EDMS</title>
+    <style>
+        .masthead img
+        {
+            width:100%;
+        }
+    </style>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="formMaster" runat="server">
+    <asp:ScriptManager ID="ScriptManager1" runat="server">
+    <Scripts>
+        <asp:ScriptReference Path="Scripts/jquery-2.1.1.min.js" />
+        <asp:ScriptReference Path="Scripts/moment.js" />
+        <asp:ScriptReference Path="Scripts/bootstrap.min.js" />
+        <asp:ScriptReference Path="Scripts/bootstrap-datetimepicker.js" />
+        <asp:ScriptReference Path="Scripts/zebra_datepicker.src.js" />
+        <asp:ScriptReference Path="Scripts/confDate.js" />
+    </Scripts>
+    </asp:ScriptManager>
+    <div class="masthead">
+        <%--<img src="http://placehold.it/940x150"/>--%>
+    </div>
+    <div class="navbar navbar-default" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <span class="navbar-brand"><img src="Img/opus_logo_small.jpg" width="118" height="55" />&nbsp;<asp:Label ID="Label2" runat="server" Text='Borneo Highway PDP Sdn Bhd' CssClass="input-sm" ForeColor="#AAAAAA"></asp:Label></span>        
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li> 
+                        <a id="a1" href="<%= ResolveUrl("../Home.aspx" + "?ID=" + Request.QueryString["ID"])%>"><span class="glyphicon glyphicon-home"></span>&nbsp;Home</a>
+                    </li>
+                    <li class="dropdown" runat="server" id="vwProject">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;Project <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li runat="server"><a id="i1" href="<%= ResolveUrl("Add_Project.aspx" + "?ID=" + Request.QueryString["ID"])%>"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Add Project</a></li>
+                            <li runat="server"><a id="i2" href="<%= ResolveUrl("View_Project.aspx" + "?ID=" + Request.QueryString["ID"])%>"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Project Listing</a></li>                                                       
+                        </ul>
+                    </li>
+
+                    <li class="dropdown" runat="server" id="vwUserRole">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;User Role <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li runat="server"><a id="o1" href="<%= ResolveUrl("Add_UserRole.aspx" + "?ID=" + Request.QueryString["ID"])%>"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Add User Role</a></li>
+                            <li runat="server"><a id="o2" href="<%= ResolveUrl("View_UserRole.aspx" + "?ID=" + Request.QueryString["ID"])%>"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;User Role Listing</a></li>
+                            <li runat="server"><a id="o3" href="<%= ResolveUrl("Manage_UserRole.aspx" + "?ID=" + Request.QueryString["ID"])%>"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Manage User Role</a></li>
+                            <li runat="server"><a id="o4" href="<%= ResolveUrl("Administrator.aspx" + "?ID=" + Request.QueryString["ID"])%>"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Administrator</a></li>
+                            <li runat="server"><a id="o5" href="<%= ResolveUrl("Staff.aspx" + "?ID=" + Request.QueryString["ID"])%>"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Staff</a></li>
+                        </ul>
+                    </li>
+                    
+                    <li class="dropdown" runat="server" id="vwManual">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-folder-open"></span>&nbsp;&nbsp;User Manual <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li runat="server"><a id="m1" href="../User Manual - ADMIN rev1.1.pdf" target="_blank"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Administrator</a></li>
+                            <li runat="server"><a id="m2" href="../User Manual - DC rev1.1.pdf" target="_blank"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Document Controller</a></li>
+                            <li runat="server"><a id="m3" href="../User Manual - PT rev1.1.pdf" target="_blank"><span class="glyphicon glyphicon-chevron-right"></span>&nbsp;Project Team</a></li>
+                        </ul>
+                    </li>
+                </ul>
+               
+                <ul class="nav navbar-nav navbar-right">
+                    <li><p class="navbar-text">
+                        <span class="glyphicon glyphicon-user"></span>
+                        <font style="color:black;">&nbsp;<asp:Label ID="lblUser" runat="server"></asp:Label></font>
+                        </p>
+                    </li>
+                    <li><a href="../default.aspx" runat="server" id="linkLogout">Logout&nbsp;<span class="glyphicon glyphicon-log-out"></span></a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+    <div class="container">
+        <div class="page-header">
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+
+        </asp:ContentPlaceHolder>
+        </div>
+    </div>
+
+    <br />
+
+    <div class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <%--<span class="navbar-brand"><img src="Img/opus_logo_only.png"  width="90" height="23" /></span>--%>
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-left input-sm">
+                    <li>
+                        <p class="navbar-text text-center">
+                            <font style="color:black;">
+                                &nbsp;&nbsp;&nbsp;Copyright &copy; 2016 
+                                &nbsp;&nbsp;&nbsp;All Rights Reserved.
+                            </font>
+                        </p>
+                    </li>                  
+                </ul>
+                <ul class="nav navbar-nav navbar-right input-sm">
+                    <li>
+                        <p class="navbar-text text-center">
+                            <font style="color:black;">
+                                Borneo Highway PDP Sdn. Bhd.
+                            </font>
+                        </p>
+                    </li>                  
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    
+    </form>
+</body>
+</html>
