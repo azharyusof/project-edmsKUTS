@@ -13,6 +13,7 @@ using System.Data.SqlClient;
 using System.Text;
 using System.Configuration;
 
+//login page
 public partial class _Default : System.Web.UI.Page
 {
     public SqlConnection con;
